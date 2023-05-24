@@ -1,0 +1,182 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Address {
+  - addrId: Integer
+  - addrProvince: String
+  - addrCity: String
+  - addrState: Integer
+  - addrDetail: String
+  - addrNickname: String
+  - addrArea: String
+  - addrZipcode: String
+  - addrPhone: String
+  - addrUser: Integer
+
+}
+class Admins {
+  - adminPhone: String
+  - adminId: Integer
+  - adminPass: String
+  - adminName: String
+  - adminDate: Date
+  - adminState: Integer
+  - adminRole: Role
+
+}
+class Areas {
+  - cityId: String
+  - areaId: String
+  - areaName: String
+
+}
+class Banner {
+  - bannerId: Integer
+  - bannerImg: String
+  - bannerState: Integer
+  - bannerUrl: String
+  - bannerName: String
+
+}
+class Cart {
+  - cartNum: Integer
+  - cartUser: Users
+  - cartId: Integer
+  - cartGoods: Goods
+  - cartPrice: Double
+
+}
+class Cities {
+  - cityId: String
+  - cityName: String
+  - provinceId: String
+
+}
+class Evaimg {
+  - evaimgName: String
+  - evaimgId: Integer
+  - eva: Integer
+
+}
+class Evaluate {
+  - evaUser: Users
+  - evaState: Integer
+  - evaId: Integer
+  - evaContent: String
+  - evaLevel: Integer
+  - imgList: List<Evaimg>
+  - evaDate: Date
+  - evaGoods: Goods
+
+}
+class Funs {
+  - funUrl: String
+  - funsList: List<Funs>
+  - funId: Integer
+  - funName: String
+  - funPid: Funs
+  - funTarget: String
+
+}
+class Goods {
+  - goodsName: String
+  - goodsState: Integer
+  - goodsVolume: Integer
+  - goodsId: Integer
+  - goodsType: GoodsType
+  - goodsNum: Integer
+  - goodsColor: String
+  - goodsDesc: String
+  - evaList: List<Evaluate>
+  - goodsPrice: Double
+  - goodsImg: String
+  - goodsMemory: Memory
+
+}
+class GoodsType {
+  - typeLv: Integer
+  - typePid: Integer
+  - typePath: String
+  - goodsList: List<Goods>
+  - typeId: Integer
+  - typeState: Integer
+  - typeName: String
+
+}
+class Guess {
+  - guessId: Integer
+  - guessNum: Integer
+  - guessGoods: Goods
+  - guessUser: Users
+  - favorite: Integer
+
+}
+class Memory {
+  - memoryId: Integer
+  - memoryName: String
+
+}
+class Order {
+  - orderUserName: String
+  - detailList: List<OrderDetail>
+  - orderId: String
+  - orderState: Integer
+  - orderPrice: Double
+  - orderPhone: String
+  - orderUser: Users
+  - orderExpressNo: String
+  - orderAddress: String
+  - orderDate: Date
+
+}
+class OrderDetail {
+  - detailPrice: Double
+  - detailId: Integer
+  - detailGoods: Goods
+  - detailNum: Integer
+  - detailOrder: Order
+
+}
+class Provinces {
+  - provinceId: String
+  - provinceName: String
+
+}
+class Role {
+  - roleName: String
+  - roleFuns: List<Funs>
+  - roleId: Integer
+
+}
+class Users {
+  - userImg: String
+  - userState: Integer
+  - userName: String
+  - userPhone: String
+  - userId: Integer
+  - userEmail: String
+  - userPass: String
+
+}
+
+GoodsType "1" o-- "n" Goods
+Cart --> Goods
+Guess --> Goods
+Evaluate --> Goods
+Evaluate "1" o--> "n" Evaimg
+OrderDetail --> Goods
+Cities --> Provinces
+Address --> Cities
+Areas --> Cities
+Address *-- Areas
+Goods o--> Evaluate
+Goods o--> GoodsType
+Goods o--> Memory
+Order *-- OrderDetail
+Order --> Address
+Order --> Users
+Role o-- Funs
+@enduml

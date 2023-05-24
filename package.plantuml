@@ -1,0 +1,284 @@
+@startuml
+
+!theme plain
+top to bottom direction
+left to right direction
+skinparam linetype ortho
+
+class Address {
+  + Address(Integer, String, String, String, String, Integer, String, String, String, Integer): 
+  + Address(): 
+  - addrPhone: String
+  - addrState: Integer
+  - addrZipcode: String
+  - addrProvince: String
+  - addrDetail: String
+  - addrId: Integer
+  - addrNickname: String
+  - addrUser: Integer
+  - addrCity: String
+  - addrArea: String
+   addrProvince: String
+   addrCity: String
+   addrPhone: String
+   addrZipcode: String
+   addrState: Integer
+   addrId: Integer
+   addrDetail: String
+   addrArea: String
+   addrNickname: String
+   addrUser: Integer
+}
+
+class Areas {
+  + Areas(): 
+  + Areas(String, String, String): 
+  - areaId: String
+  - areaName: String
+  - cityId: String
+   cityId: String
+   areaId: String
+   areaName: String
+}
+
+class Cart {
+  + Cart(Goods, Integer, Double, Users): 
+  + Cart(): 
+  + Cart(Integer, Goods, Integer, Double, Users): 
+  - cartUser: Users
+  - cartNum: Integer
+  - cartPrice: Double
+  - cartId: Integer
+  - cartGoods: Goods
+   cartId: Integer
+   cartGoods: Goods
+   cartPrice: Double
+   cartUser: Users
+   cartNum: Integer
+}
+class Cities {
+  + Cities(): 
+  + Cities(String, String, String): 
+  - cityName: String
+  - cityId: String
+  - provinceId: String
+   cityName: String
+   cityId: String
+   provinceId: String
+}
+class Evaimg {
+  + Evaimg(Integer, String, Integer): 
+  + Evaimg(String, Integer): 
+  + Evaimg(): 
+  - eva: Integer
+  - evaimgId: Integer
+  - evaimgName: String
+   evaimgName: String
+   evaimgId: Integer
+   eva: Integer
+}
+class Evaluate {
+  + Evaluate(Integer, Users, String, Date, Goods, Integer, Integer, List<Evaimg>): 
+  + Evaluate(Users, String, Date, Goods, Integer, Integer): 
+  + Evaluate(Integer, Users, String, Date, Goods, Integer, Integer): 
+  + Evaluate(): 
+  - evaContent: String
+  - imgList: List<Evaimg>
+  - evaGoods: Goods
+  - evaId: Integer
+  - evaLevel: Integer
+  - evaState: Integer
+  - evaDate: Date
+  - evaUser: Users
+   evaId: Integer
+   evaLevel: Integer
+   imgList: List<Evaimg>
+   evaDate: Date
+   evaState: Integer
+   evaGoods: Goods
+   evaUser: Users
+   evaContent: String
+}
+class Funs {
+  + Funs(): 
+  + Funs(Integer, String, String, Funs, String, List<Funs>): 
+  + Funs(Integer, String, String, Funs, String): 
+  - funUrl: String
+  - funTarget: String
+  - funName: String
+  - funId: Integer
+  - funPid: Funs
+  - funsList: List<Funs>
+   funPid: Funs
+   funsList: List<Funs>
+   funUrl: String
+   funId: Integer
+   funTarget: String
+   funName: String
+}
+class Goods {
+  + Goods(): 
+  + Goods(Integer, String, Double, Integer, GoodsType, Memory, String, String, Integer, String, Integer): 
+  + Goods(String, Double, Integer, GoodsType, Memory, String, String, String): 
+  - goodsName: String
+  - goodsType: GoodsType
+  - goodsVolume: Integer
+  - goodsDesc: String
+  - goodsState: Integer
+  - goodsNum: Integer
+  - goodsColor: String
+  - goodsId: Integer
+  - goodsImg: String
+  - evaList: List<Evaluate>
+  - goodsPrice: Double
+  - goodsMemory: Memory
+   evaList: List<Evaluate>
+   goodsImg: String
+   goodsType: GoodsType
+   goodsNum: Integer
+   goodsDesc: String
+   goodsId: Integer
+   goodsState: Integer
+   goodsMemory: Memory
+   goodsVolume: Integer
+   goodsName: String
+   goodsColor: String
+   goodsPrice: Double
+}
+class GoodsType {
+  + GoodsType(Integer, String, Integer, Integer, String, Integer): 
+  + GoodsType(): 
+  - typePath: String
+  - typeLv: Integer
+  - typeId: Integer
+  - typeName: String
+  - typeState: Integer
+  - typePid: Integer
+  - goodsList: List<Goods>
+   typePath: String
+   typePid: Integer
+   goodsList: List<Goods>
+   typeName: String
+   typeId: Integer
+   typeLv: Integer
+   typeState: Integer
+}
+class Guess {
+  + Guess(): 
+  + Guess(Goods, Integer, Integer, Users): 
+  + Guess(Integer, Goods, Integer, Integer, Users): 
+  - guessId: Integer
+  - favorite: Integer
+  - guessGoods: Goods
+  - guessNum: Integer
+  - guessUser: Users
+   guessGoods: Goods
+   guessNum: Integer
+   guessUser: Users
+   guessId: Integer
+   favorite: Integer
+}
+class Memory {
+  + Memory(): 
+  - memoryId: Integer
+  - memoryName: String
+   memoryId: Integer
+   memoryName: String
+}
+class Order {
+  + Order(String, Users, Date, Double, Integer, String, String, String, String, List<OrderDetail>): 
+  + Order(Users, Date, Double, Integer, String, String, String): 
+  + Order(): 
+  + Order(String, Users, Date, Double, Integer, String, String, String): 
+  - detailList: List<OrderDetail>
+  - orderPhone: String
+  - orderUser: Users
+  - orderDate: Date
+  - orderState: Integer
+  - orderExpressNo: String
+  - orderUserName: String
+  - orderPrice: Double
+  - orderId: String
+  - orderAddress: String
+   orderPhone: String
+   orderUser: Users
+   orderId: String
+   orderDate: Date
+   orderExpressNo: String
+   orderPrice: Double
+   orderUserName: String
+   orderState: Integer
+   detailList: List<OrderDetail>
+   orderAddress: String
+}
+class OrderDetail {
+  + OrderDetail(Integer, Order, Goods, Double, Integer): 
+  + OrderDetail(Goods, Double, Integer): 
+  + OrderDetail(): 
+  - detailOrder: Order
+  - detailPrice: Double
+  - detailNum: Integer
+  - detailGoods: Goods
+  - detailId: Integer
+   detailId: Integer
+   detailPrice: Double
+   detailOrder: Order
+   detailGoods: Goods
+   detailNum: Integer
+}
+class Provinces {
+  + Provinces(): 
+  + Provinces(String, String): 
+  - provinceId: String
+  - provinceName: String
+   provinceName: String
+   provinceId: String
+}
+class Role {
+  + Role(): 
+  + Role(Integer, String): 
+  + Role(Integer, String, List<Funs>): 
+  - roleName: String
+  - roleId: Integer
+  - roleFuns: List<Funs>
+   roleName: String
+   roleId: Integer
+   roleFuns: List<Funs>
+}
+class Users {
+  + Users(): 
+  + Users(Integer, String, String, String, String, Integer, String): 
+  - userPhone: String
+  - userPass: String
+  - userImg: String
+  - userName: String
+  - userState: Integer
+  - userEmail: String
+  - userId: Integer
+   userId: Integer
+   userEmail: String
+   userState: Integer
+   userName: String
+   userPhone: String
+   userImg: String
+   userPass: String
+}
+
+GoodsType "1" o-- "n" Goods
+Cart --> Goods
+Guess --> Goods
+Evaluate --> Goods
+Evaluate "1" o--> "n" Evaimg
+OrderDetail --> Goods
+Cities --> Provinces
+Address --> Cities
+Areas --> Cities
+Address *-- Areas
+Goods o--> Evaluate
+Goods o--> GoodsType
+Goods o--> Memory
+Order *-- OrderDetail
+Order --> Address
+Order --> Users
+Role o-- Funs
+@enduml

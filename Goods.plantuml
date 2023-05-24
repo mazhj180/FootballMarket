@@ -1,0 +1,353 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Address {
+  - addrId: Integer
+  - addrProvince: String
+  - addrCity: String
+  - addrState: Integer
+  - addrDetail: String
+  - addrNickname: String
+  - addrArea: String
+  - addrZipcode: String
+  - addrPhone: String
+  - addrUser: Integer
+  + setAddrId(Integer): void
+  + setAddrArea(String): void
+  + getAddrProvince(): String
+  + setAddrZipcode(String): void
+  + setAddrDetail(String): void
+  + getAddrUser(): Integer
+  + getAddrZipcode(): String
+  + setAddrCity(String): void
+  + getAddrState(): Integer
+  + setAddrState(Integer): void
+  + getAddrId(): Integer
+  + getAddrPhone(): String
+  + getAddrCity(): String
+  + getAddrDetail(): String
+  + getAddrArea(): String
+  + setAddrUser(Integer): void
+  + setAddrProvince(String): void
+  + setAddrNickname(String): void
+  + getAddrNickname(): String
+  + setAddrPhone(String): void
+}
+class Admins {
+  - adminPhone: String
+  - adminId: Integer
+  - adminPass: String
+  - adminName: String
+  - adminDate: Date
+  - adminState: Integer
+  - adminRole: Role
+  + getAdminDate(): Date
+  + getAdminRole(): Role
+  + setAdminState(Integer): void
+  + getAdminId(): Integer
+  + getAdminPhone(): String
+  + getAdminState(): Integer
+  + setAdminId(Integer): void
+  + getAdminName(): String
+  + getAdminPass(): String
+  + setAdminDate(Date): void
+  + setAdminPass(String): void
+  + setAdminName(String): void
+  + setAdminRole(Role): void
+  + setAdminPhone(String): void
+}
+class Areas {
+  - cityId: String
+  - areaId: String
+  - areaName: String
+  + getAreaName(): String
+  + setAreaName(String): void
+  + setAreaId(String): void
+  + getAreaId(): String
+  + getCityId(): String
+  + setCityId(String): void
+}
+class Banner {
+  - bannerId: Integer
+  - bannerImg: String
+  - bannerState: Integer
+  - bannerUrl: String
+  - bannerName: String
+  + setBannerUrl(String): void
+  + getBannerImg(): String
+  + getBannerId(): Integer
+  + getBannerName(): String
+  + setBannerState(Integer): void
+  + setBannerImg(String): void
+  + setBannerName(String): void
+  + setBannerId(Integer): void
+  + getBannerUrl(): String
+  + getBannerState(): Integer
+}
+class Cart {
+  - cartNum: Integer
+  - cartUser: Users
+  - cartId: Integer
+  - cartGoods: Goods
+  - cartPrice: Double
+  + getCartGoods(): Goods
+  + getCartId(): Integer
+  + getCartPrice(): Double
+  + setCartId(Integer): void
+  + getCartNum(): Integer
+  + setCartNum(Integer): void
+  + setCartGoods(Goods): void
+  + setCartPrice(Double): void
+  + getCartUser(): Users
+  + setCartUser(Users): void
+}
+class Cities {
+  - cityId: String
+  - cityName: String
+  - provinceId: String
+  + getCityName(): String
+  + setProvinceId(String): void
+  + getProvinceId(): String
+  + setCityId(String): void
+  + getCityId(): String
+  + setCityName(String): void
+}
+class Evaimg {
+  - evaimgName: String
+  - evaimgId: Integer
+  - eva: Integer
+  + getEvaimgName(): String
+  + setEva(Integer): void
+  + setEvaimgId(Integer): void
+  + setEvaimgName(String): void
+  + getEvaimgId(): Integer
+  + getEva(): Integer
+}
+class Evaluate {
+  - evaUser: Users
+  - evaState: Integer
+  - evaId: Integer
+  - evaContent: String
+  - evaLevel: Integer
+  - imgList: List<Evaimg>
+  - evaDate: Date
+  - evaGoods: Goods
+  + getImgList(): List<Evaimg>
+  + getEvaId(): Integer
+  + getEvaUser(): Users
+  + getEvaState(): Integer
+  + getEvaGoods(): Goods
+  + getEvaLevel(): Integer
+  + setImgList(List<Evaimg>): void
+  + setEvaGoods(Goods): void
+  + setEvaUser(Users): void
+  + getEvaContent(): String
+  + getEvaDate(): Date
+  + setEvaLevel(Integer): void
+  + setEvaId(Integer): void
+  + setEvaContent(String): void
+  + setEvaDate(Date): void
+  + setEvaState(Integer): void
+}
+class Funs {
+  - funUrl: String
+  - funsList: List<Funs>
+  - funId: Integer
+  - funName: String
+  - funPid: Funs
+  - funTarget: String
+  + getFunPid(): Funs
+  + setFunUrl(String): void
+  + getFunId(): Integer
+  + setFunName(String): void
+  + getFunTarget(): String
+  + getFunsList(): List<Funs>
+  + setFunPid(Funs): void
+  + setFunId(Integer): void
+  + getFunName(): String
+  + setFunTarget(String): void
+  + setFunsList(List<Funs>): void
+  + getFunUrl(): String
+}
+class Goods {
+  - goodsName: String
+  - goodsState: Integer
+  - goodsVolume: Integer
+  - goodsId: Integer
+  - goodsType: GoodsType
+  - goodsNum: Integer
+  - goodsColor: String
+  - goodsDesc: String
+  - evaList: List<Evaluate>
+  - goodsPrice: Double
+  - goodsImg: String
+  - goodsMemory: Memory
+  + getGoodsImg(): String
+  + getGoodsVolume(): Integer
+  + setGoodsNum(Integer): void
+  + setGoodsVolume(Integer): void
+  + getGoodsType(): GoodsType
+  + setGoodsName(String): void
+  + getGoodsColor(): String
+  + getGoodsName(): String
+  + setGoodsPrice(Double): void
+  + getGoodsMemory(): Memory
+  + setGoodsMemory(Memory): void
+  + getGoodsNum(): Integer
+  + setGoodsId(Integer): void
+  + setGoodsImg(String): void
+  + getEvaList(): List<Evaluate>
+  + setEvaList(List<Evaluate>): void
+  + getGoodsPrice(): Double
+  + getGoodsId(): Integer
+  + setGoodsDesc(String): void
+  + setGoodsColor(String): void
+  + setGoodsState(Integer): void
+  + getGoodsDesc(): String
+  + setGoodsType(GoodsType): void
+  + getGoodsState(): Integer
+}
+class GoodsType {
+  - typeLv: Integer
+  - typePid: Integer
+  - typePath: String
+  - goodsList: List<Goods>
+  - typeId: Integer
+  - typeState: Integer
+  - typeName: String
+  + setTypeLv(Integer): void
+  + getTypeName(): String
+  + setTypeId(Integer): void
+  + getTypeLv(): Integer
+  + setTypePath(String): void
+  + getTypePid(): Integer
+  + getTypeState(): Integer
+  + setGoodsList(List<Goods>): void
+  + getTypeId(): Integer
+  + getTypePath(): String
+  + setTypePid(Integer): void
+  + setTypeName(String): void
+  + setTypeState(Integer): void
+  + getGoodsList(): List<Goods>
+}
+class Guess {
+  - guessId: Integer
+  - guessNum: Integer
+  - guessGoods: Goods
+  - guessUser: Users
+  - favorite: Integer
+  + setGuessGoods(Goods): void
+  + getGuessId(): Integer
+  + getGuessNum(): Integer
+  + setGuessUser(Users): void
+  + setGuessNum(Integer): void
+  + getFavorite(): Integer
+  + getGuessUser(): Users
+  + getGuessGoods(): Goods
+  + setFavorite(Integer): void
+  + setGuessId(Integer): void
+}
+class Memory {
+  - memoryId: Integer
+  - memoryName: String
+  + setMemoryName(String): void
+  + getMemoryId(): Integer
+  + getMemoryName(): String
+  + setMemoryId(Integer): void
+}
+class Order {
+  - orderUserName: String
+  - detailList: List<OrderDetail>
+  - orderId: String
+  - orderState: Integer
+  - orderPrice: Double
+  - orderPhone: String
+  - orderUser: Users
+  - orderExpressNo: String
+  - orderAddress: String
+  - orderDate: Date
+  + getOrderUser(): Users
+  + getOrderAddress(): String
+  + setOrderDate(Date): void
+  + setOrderUserName(String): void
+  + setOrderPhone(String): void
+  + setOrderExpressNo(String): void
+  + getOrderId(): String
+  + getOrderPrice(): Double
+  + getOrderUserName(): String
+  + setDetailList(List<OrderDetail>): void
+  + setOrderId(String): void
+  + getOrderPhone(): String
+  + getOrderExpressNo(): String
+  + setOrderPrice(Double): void
+  + setOrderUser(Users): void
+  + setOrderAddress(String): void
+  + getOrderState(): Integer
+  + setOrderState(Integer): void
+  + getOrderDate(): Date
+  + getDetailList(): List<OrderDetail>
+}
+class OrderDetail {
+  - detailPrice: Double
+  - detailId: Integer
+  - detailGoods: Goods
+  - detailNum: Integer
+  - detailOrder: Order
+  + getDetailOrder(): Order
+  + setDetailNum(Integer): void
+  + setDetailOrder(Order): void
+  + setDetailGoods(Goods): void
+  + getDetailId(): Integer
+  + setDetailPrice(Double): void
+  + getDetailNum(): Integer
+  + getDetailPrice(): Double
+  + setDetailId(Integer): void
+  + getDetailGoods(): Goods
+}
+class Provinces {
+  - provinceId: String
+  - provinceName: String
+  + setProvinceName(String): void
+  + getProvinceId(): String
+  + getProvinceName(): String
+  + setProvinceId(String): void
+}
+class Role {
+  - roleName: String
+  - roleFuns: List<Funs>
+  - roleId: Integer
+  + setRoleFuns(List<Funs>): void
+  + setRoleName(String): void
+  + setRoleId(Integer): void
+  + getRoleName(): String
+  + getRoleId(): Integer
+  + getRoleFuns(): List<Funs>
+}
+class Users {
+  - userImg: String
+  - userState: Integer
+  - userName: String
+  - userPhone: String
+  - userId: Integer
+  - userEmail: String
+  - userPass: String
+  + setUserImg(String): void
+  + getUserImg(): String
+  + getUserPass(): String
+  + getUserPhone(): String
+  + setUserPass(String): void
+  + getUserState(): Integer
+  + getUserEmail(): String
+  + getUserId(): Integer
+  + setUserId(Integer): void
+  + setUserState(Integer): void
+  + setUserName(String): void
+  + getUserName(): String
+  + setUserPhone(String): void
+  + setUserEmail(String): void
+}
+
+@enduml

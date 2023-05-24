@@ -1,0 +1,38 @@
+@startuml
+participant Actor
+Actor -> AddressController : modifyAddress //发送请求修改地址
+activate AddressController
+AddressController -> IProCityAreaService : //调用业务方法查找省份id
+activate IProCityAreaService
+IProCityAreaService --> ProvincesMapper : //查询数据库
+activate ProvincesMapper
+ProvincesMapper --> IProCityAreaService : //返回查询结果
+deactivate ProvincesMapper
+IProCityAreaService --> AddressController : //返回查询到的省份id
+deactivate IProCityAreaService
+AddressController -> IProCityAreaService : //调用业务方法查找城市id
+activate IProCityAreaService
+IProCityAreaService --> CityMapper ://查询数据库
+activate CityMapper
+CityMapper --> IProCityAreaService://返回查询结果
+deactivate CityMapper
+IProCityAreaService --> AddressController: //返回查询到的城市id
+deactivate IProCityAreaService
+AddressController -> IProCityAreaService : //调用业务方法查找区域id
+activate IProCityAreaService
+IProCityAreaService --> AreaMapper://查询数据库
+activate AreaMapper
+AreaMapper --> IProCityAreaService:返回查询结果
+deactivate AreaMapper
+IProCityAreaService --> AddressController ://返回查询到的区域id
+deactivate IProCityAreaService
+AddressController -> IAddressService : updateAddress //调用业务方法更新地址
+activate IAddressService
+IAddressService --> AddressMapper : //执行数据库修改操作
+activate AddressMapper
+AddressMapper --> IAddressService : //返回修改结果
+deactivate AddressMapper
+IAddressService --> AddressController :// 返回更新地址结果
+deactivate IAddressService
+return 响应数据给客户端
+@enduml

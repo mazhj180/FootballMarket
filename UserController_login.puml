@@ -1,0 +1,19 @@
+@startuml
+participant Actor
+Actor -> UserController : login//发送登录请求
+activate UserController
+UserController -> MD5Utils : passToMD5 //md5加密
+activate MD5Utils
+MD5Utils --> UserController : 返回加密后的密码
+deactivate MD5Utils
+UserController -> IUserService : login //调用service层登录业务方法
+activate IUserService
+IUserService --> UserMapper : 查询数据库
+activate UserMapper
+IUserService --> UserController : 将处理结果返回
+UserMapper --> IUserService : 返回数据
+deactivate UserMapper
+deactivate IUserService
+
+return 响应给客户端
+@enduml
